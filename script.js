@@ -157,7 +157,6 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   };
 
-
   window.addEventListener("resize", () => {
     setCanvasSize();
     render();
@@ -165,101 +164,107 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   // Wallet Modal Functionality
-  const connectWalletBtn = document.querySelector('.btn.secondary a');
-  const walletModal = document.getElementById('walletModal');
-  const modalBackdrop = document.querySelector('.modal-backdrop');
+  const walletModal = document.getElementById("walletModal");
+  const modalBackdrop = document.querySelector(".modal-backdrop");
 
   // Show modal when Connect Wallet is clicked
-  connectWalletBtn.addEventListener('click', (e) => {
+  connectWalletBtn.addEventListener("click", (e) => {
     e.preventDefault();
-    walletModal.classList.add('active');
-    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+    walletModal.classList.add("active");
+    document.body.style.overflow = "hidden"; // Prevent background scrolling
   });
 
   // Hide modal when clicking backdrop or pressing Escape
-  modalBackdrop.addEventListener('click', () => {
-    walletModal.classList.remove('active');
-    document.body.style.overflow = ''; // Restore scrolling
+  modalBackdrop.addEventListener("click", () => {
+    walletModal.classList.remove("active");
+    document.body.style.overflow = ""; // Restore scrolling
   });
 
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && walletModal.classList.contains('active')) {
-      walletModal.classList.remove('active');
-      document.body.style.overflow = ''; // Restore scrolling
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && walletModal.classList.contains("active")) {
+      walletModal.classList.remove("active");
+      document.body.style.overflow = ""; // Restore scrolling
     }
   });
 
   // Add click handlers for wallet options (optional - for future functionality)
-  const walletOptions = document.querySelectorAll('.wallet-option');
-  walletOptions.forEach(option => {
-    option.addEventListener('click', () => {
+  const walletOptions = document.querySelectorAll(".wallet-option");
+  walletOptions.forEach((option) => {
+    option.addEventListener("click", () => {
       // Here you can add wallet connection logic
-      console.log('Wallet option clicked:', option.querySelector('h3').textContent);
+      console.log(
+        "Wallet option clicked:",
+        option.querySelector("h3").textContent
+      );
       // For now, just close the modal
-      walletModal.classList.remove('active');
-      document.body.style.overflow = '';
+      walletModal.classList.remove("active");
+      document.body.style.overflow = "";
     });
   });
 
   // Floating Notification Functionality
   class FloatingNotification {
     constructor() {
-      this.notification = document.getElementById('floatingNotification');
-      this.closeBtn = document.querySelector('.floating-close');
-      this.backdrop = document.querySelector('.floating-backdrop');
-      this.dismissBtn = document.querySelector('.floating-dismiss-btn');
+      this.notification = document.getElementById("floatingNotification");
+      this.closeBtn = document.querySelector(".floating-close");
+      this.backdrop = document.querySelector(".floating-backdrop");
+      this.dismissBtn = document.querySelector(".floating-dismiss-btn");
       this.isDismissed = false;
-      
+
       this.init();
     }
-    
+
     init() {
       // Close button
-      this.closeBtn.addEventListener('click', () => this.hide());
-      
+      this.closeBtn.addEventListener("click", () => this.hide());
+
       // Backdrop click
-      this.backdrop.addEventListener('click', () => this.hide());
-      
+      this.backdrop.addEventListener("click", () => this.hide());
+
       // Dismiss button
-      this.dismissBtn.addEventListener('click', () => {
+      this.dismissBtn.addEventListener("click", () => {
         this.isDismissed = true;
         this.hide();
       });
-      
+
       // Escape key
-      document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape' && this.isVisible()) {
+      document.addEventListener("keydown", (e) => {
+        if (e.key === "Escape" && this.isVisible()) {
           this.hide();
         }
       });
     }
-    
+
     show() {
       if (this.isDismissed) return;
-      this.notification.classList.add('active');
-      document.body.style.overflow = 'hidden';
+      this.notification.classList.add("active");
+      document.body.style.overflow = "hidden";
     }
-    
+
     hide() {
-      this.notification.classList.remove('active');
-      document.body.style.overflow = '';
+      this.notification.classList.remove("active");
+      document.body.style.overflow = "";
     }
-    
+
     isVisible() {
-      return this.notification.classList.contains('active');
+      return this.notification.classList.contains("active");
     }
-    
+
     // Method to customize notification content
-    setNotification(title, description, status = 'Missing') {
-      const titleEl = document.querySelector('.floating-notification-title');
-      const descEl = document.querySelector('.floating-notification-description');
-      const statusEl = document.querySelector('.floating-notification-status span');
-      
+    setNotification(title, description, status = "Missing") {
+      const titleEl = document.querySelector(".floating-notification-title");
+      const descEl = document.querySelector(
+        ".floating-notification-description"
+      );
+      const statusEl = document.querySelector(
+        ".floating-notification-status span"
+      );
+
       if (titleEl) titleEl.textContent = title;
       if (descEl) descEl.textContent = description;
       if (statusEl) statusEl.textContent = status;
     }
-    
+
     // Reset dismissed state
     reset() {
       this.isDismissed = false;
@@ -271,7 +276,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
   // Make floatingNotification globally available for testing
   window.floatingNotification = floatingNotification;
-
 
   // Example usage - you can call this from anywhere in your code:
   // popupCard.setContent('Success!', 'Your action was completed successfully.', 'success');
