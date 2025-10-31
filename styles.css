@@ -1,0 +1,809 @@
+@import url("https://fonts.googleapis.com/css2?family=DM+Mono:ital,wght@0,300;0,400;0,500;1,300;1,400;1,500&family=Host+Grotesk:ital,wght@0,300..800;1,300..800&display=swap");
+
+:root {
+  --fg: #241910;
+  --bg: #fefbf4;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "DM Mono", monospace;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+h1 {
+  font-family: "Host Grotesk";
+  font-size: 2.5rem;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+p {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+a {
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--fg);
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.25rem;
+}
+
+.btn.primary {
+  background-color: var(--bg);
+}
+
+.btn.primary a {
+  color: var(--fg);
+}
+
+.btn.secondary {
+  background-color: black;
+}
+
+.btn.secondary a {
+  color: var(--bg);
+}
+
+nav {
+  position: fixed;
+  width: 100vw;
+  padding: 1.5rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  will-change: opacity;
+  z-index: 2;
+}
+
+nav .logo {
+  display: flex;
+  align-items: center;
+}
+
+nav .logo img {
+  width: 2rem;
+}
+
+nav .logo a {
+  text-transform: none;
+  font-family: "Host Grotesk";
+  font-size: 1.5rem;
+}
+
+nav .nav-buttons {
+  display: flex;
+  gap: 1.5rem;
+}
+
+section {
+  position: relative;
+  width: 100vw;
+  height: 100svh;
+  overflow: hidden;
+}
+
+.outro {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  background-color: var(--bg);
+  color: var(--fg);
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-content {
+  position: absolute;
+  top: 25%;
+  left: 50%;
+  transform: translateX(-50%);
+  transform-style: preserve-3d;
+  perspective: 1000px;
+  padding: 0.5rem 0;
+}
+
+.header {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  text-align: center;
+  color: var(--fg);
+  transform-origin: center;
+  will-change: transform, opacity;
+}
+
+.header h1 {
+  width: 50%;
+  margin-bottom: 0.5rem;
+}
+
+.header p {
+  opacity: 0.35;
+}
+
+.client-logos {
+  width: 20%;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.client-logos .client-logo {
+  flex: 1;
+}
+
+.client-logos .client-logo img {
+  object-fit: contain;
+  height: 2rem;
+}
+
+.hero-img-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50%;
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.hero-img {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transform: translateZ(1000px);
+  opacity: 0;
+  will-change: transform, opacity;
+}
+
+.play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 50px;
+  height: 50px;
+  background-color: rgba(0, 0, 0, 0.8);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 255, 255, 0.1);
+  z-index: 10;
+}
+
+.play-button:hover {
+  background-color: rgba(0, 0, 0, 0.9);
+  transform: translate(-50%, -50%) scale(1.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.play-button svg {
+  color: white;
+  width: 20px;
+  height: 20px;
+  transition: transform 0.3s ease;
+}
+
+.play-button:hover svg {
+  transform: scale(1.1);
+}
+
+
+@media (max-width: 1000px) {
+  h1 {
+    font-size: 2rem;
+  }
+
+  nav .nav-buttons {
+    display: none;
+  }
+
+  .header h1,
+  .hero-img-container {
+    width: calc(100% - 4rem);
+  }
+  
+  .client-logos {
+    width: 40%;
+  }
+
+  .play-button {
+    width: 40px;
+    height: 40px;
+  }
+
+  .play-button svg {
+    width: 16px;
+    height: 16px;
+  }
+}
+
+/* Wallet Modal Styles - Floating Notification Design */
+.wallet-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.wallet-modal.active {
+  display: flex;
+  animation: walletFadeIn 0.3s ease-out;
+}
+
+@keyframes walletFadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.modal-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+.wallet-modal-content {
+  position: relative;
+  background-color: rgba(248, 250, 252, 0.85);
+  border-radius: 16px;
+  max-width: 400px;
+  width: 100%;
+  overflow: hidden;
+  box-shadow: 0px 170px 48px 0px rgba(18, 18, 19, 0.00), 0px 109px 44px 0px rgba(18, 18, 19, 0.01), 0px 61px 37px 0px rgba(18, 18, 19, 0.05), 0px 27px 27px 0px rgba(18, 18, 19, 0.09), 0px 7px 15px 0px rgba(18, 18, 19, 0.10);
+  z-index: 1001;
+  animation: walletSlideUp 0.3s ease-out;
+}
+
+@keyframes walletSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.wallet-modal-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  width: 100%;
+  padding: 1.5rem 1.5rem 0 1.5rem;
+}
+
+.wallet-header {
+  margin-bottom: 1rem;
+}
+
+.wallet-logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.hedera-logo {
+  height: 32px;
+  width: auto;
+}
+
+.wallet-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  flex: 1;
+  width: 100%;
+}
+
+.wallet-title-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.wallet-title {
+  font-family: "Inter", sans-serif;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #1e293b;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.wallet-subtitle {
+  font-family: "Inter", sans-serif;
+  font-size: 0.625rem;
+  color: #64748b;
+  text-transform: none;
+  font-weight: 400;
+  margin: 2px 0px 0px;
+  line-height: 1.3;
+}
+
+.wallet-options-container {
+  padding: 0 0.25rem;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.wallet-options {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+}
+
+.wallet-option {
+  width: 100%;
+  padding: 1rem;
+  background-color: rgba(255, 255, 255, 0.8);
+  border: 1px solid black;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+  text-align: left;
+  margin-bottom: 0;
+}
+
+.wallet-option:last-child {
+  margin-bottom: 30px;
+}
+
+.wallet-option:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  transform: translateY(-1px);
+}
+
+.wallet-option:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.wallet-option-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.wallet-option-left {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.wallet-icon {
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.wallet-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.wallet-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.125rem;
+}
+
+.wallet-name-row {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.wallet-name {
+  font-family: "Inter", sans-serif;
+  font-size: 0.8125rem;
+  font-weight: 500;
+  color: #1f2937;
+  margin: 0;
+}
+
+.wallet-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 0.125rem 0.5rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.wallet-badge.recommended {
+  background-color: #1f2937;
+  color: white;
+}
+
+.wallet-badge.popular {
+  background-color: transparent;
+  color: #92400e;
+  font-size: 0.5rem;
+}
+
+.badge-icon {
+  width: 12px;
+  height: 12px;
+}
+
+.wallet-description {
+  font-family: "Geist", monospace;
+  font-size: 0.5rem;
+  color: #1C2024;
+  text-transform: none;
+  font-weight: 400;
+  margin: 2px 0px 0px;
+  line-height: 1.3;
+}
+
+.wallet-option-right {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.external-link-icon {
+  width: 16px;
+  height: 16px;
+  color: #9ca3af;
+  transition: color 0.2s ease;
+}
+
+.wallet-option:hover .external-link-icon {
+  color: #6b7280;
+}
+
+.wallet-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0.5rem 1.5rem;
+  background-color: rgba(18, 18, 19, 0.07);
+  margin-top: auto;
+}
+
+.wallet-footer-text {
+  font-family: "DM Mono", monospace;
+  font-size: 0.6875rem;
+  color: #64748b;
+  text-transform: none;
+  font-weight: 400;
+  margin: 0;
+}
+
+.wallet-footer-link {
+  color: #1e293b;
+  text-decoration: underline;
+  font-weight: 500;
+  font-size: 0.625rem;
+  transition: color 0.2s ease;
+}
+
+.wallet-footer-link:hover {
+  color: #475569;
+}
+
+/* Mobile Responsive */
+@media (max-width: 640px) {
+  .wallet-modal {
+    padding: 0.5rem;
+  }
+  
+  .wallet-modal-content {
+    max-width: 350px;
+  }
+  
+  .wallet-modal-inner {
+    padding: 1.5rem 1.5rem 0 1.5rem;
+  }
+  
+  .wallet-content {
+    gap: 2rem;
+  }
+  
+  .wallet-title {
+    font-size: 1.25rem;
+  }
+  
+  .wallet-option {
+    padding: 0.75rem;
+  }
+  
+  .wallet-icon {
+    width: 28px;
+    height: 28px;
+  }
+  
+  .wallet-name {
+    font-size: 0.8125rem;
+  }
+  
+  .wallet-description {
+    font-size: 0.8125rem;
+  }
+  
+  .wallet-footer {
+    padding: 0.75rem 1.5rem;
+  }
+}
+
+/* Floating Notification Popup Styles */
+.floating-notification {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 2000;
+  display: none;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 1rem;
+  pointer-events: none;
+}
+
+.floating-notification.active {
+  display: flex;
+  pointer-events: auto;
+}
+
+.floating-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.2s ease;
+}
+
+.floating-content {
+  position: relative;
+  background-color: #f8fafc;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  width: 500px;
+  max-height: 500px;
+  overflow: hidden;
+  transform: translateY(-2px);
+  transition: all 0.2s ease;
+  animation: floatingSlideIn 0.2s ease-out;
+}
+
+@keyframes floatingSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-2px) scale(1);
+  }
+}
+
+.floating-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem;
+  border-bottom: 1px dashed #cbd5e1;
+  background-color: #f1f5f9;
+  border-radius: 12px 12px 0 0;
+}
+
+.floating-title {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.floating-title-text {
+  font-family: "Host Grotesk", sans-serif;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.floating-close {
+  background: none;
+  border: none;
+  padding: 0.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+  color: #64748b;
+  transition: all 0.15s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.floating-close:hover {
+  background-color: #e2e8f0;
+  color: #475569;
+}
+
+.floating-body {
+  background-color: #f8fafc;
+  overflow-y: auto;
+  flex: 1;
+}
+
+.floating-notification-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background-color: #f1f5f9;
+  margin: 1rem;
+  transition: all 0.2s ease;
+  animation: slideInFromBottom 0.3s ease-out;
+}
+
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.floating-icon {
+  flex-shrink: 0;
+  width: 32px;
+  height: 32px;
+  background-color: #f1f5f9;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #64748b;
+}
+
+.floating-notification-content {
+  flex: 1;
+  min-width: 0;
+}
+
+.floating-notification-title {
+  font-family: "Host Grotesk", sans-serif;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #1e293b;
+  margin-bottom: 0.25rem;
+}
+
+.floating-notification-description {
+  font-family: "DM Mono", monospace;
+  font-size: 0.75rem;
+  color: #64748b;
+  text-transform: none;
+  font-weight: 400;
+  line-height: 1.4;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.floating-notification-status {
+  flex-shrink: 0;
+}
+
+.status-missing {
+  font-family: "DM Mono", monospace;
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: #64748b;
+  text-transform: none;
+}
+
+.floating-footer {
+  padding: 1rem;
+  border-top: 1px solid #e2e8f0;
+  background-color: #f1f5f9;
+  border-radius: 0 0 12px 12px;
+}
+
+.floating-dismiss-btn {
+  width: 100%;
+  padding: 0.5rem 1rem;
+  font-family: "DM Mono", monospace;
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: #64748b;
+  background-color: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-transform: none;
+}
+
+.floating-dismiss-btn:hover {
+  background-color: #f1f5f9;
+  color: #475569;
+}
+
+/* Floating Notification Mobile Responsive */
+@media (max-width: 640px) {
+  .floating-notification {
+    padding: 0.5rem;
+  }
+  
+  .floating-content {
+    width: 350px;
+  }
+  
+  .floating-header,
+  .floating-notification-item,
+  .floating-footer {
+    padding: 0.75rem;
+  }
+}
